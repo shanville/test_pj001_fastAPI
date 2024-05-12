@@ -32,6 +32,8 @@ def create_user(user: UserCreate, db: Session = Depends(get_db)):
     db.refresh(new_user)
     return new_user
 
+
+
 @app.get("/users/", response_model=List[UserCreate])  # レスポンスモデルの型を適切に設定
 def read_users(db: Session = Depends(get_db)):
     return db.query(User).all()
